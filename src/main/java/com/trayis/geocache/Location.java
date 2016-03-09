@@ -53,7 +53,6 @@ public class Location<K> implements Comparable<Location<K>> {
 
     @Override
     public int compareTo(Location<K> tmp) {
-
         if (this.x < tmp.x) {
             return -1;
         }
@@ -70,7 +69,34 @@ public class Location<K> implements Comparable<Location<K>> {
             return 1;
         }
         return 0;
-
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Location)) {
+            return false;
+        }
+
+        Location<?> another = (Location<?>)obj;
+        if (!another.data.getClass().equals(data.getClass())) {
+            return false;
+        }
+
+        return (x == another.x && y == another.y);
+    }
+
+    @Override
+    public int hashCode() {
+        int hashCode = 91;
+
+        long doubleFieldBits = Double.doubleToLongBits(x);
+        hashCode = 113 * hashCode + (int)(doubleFieldBits ^ (doubleFieldBits >>> 32));
+
+        doubleFieldBits = Double.doubleToLongBits(y);
+        hashCode = 113 * hashCode + (int)(doubleFieldBits ^ (doubleFieldBits >>> 32));
+
+        hashCode = 113 * hashCode + data.hashCode();
+
+        return hashCode;
+    }
 }

@@ -11,7 +11,7 @@ public class Node {
 
     private double h;
 
-    private Node opt_parent;
+    private Node optParent;
 
     private Location point;
 
@@ -35,12 +35,12 @@ public class Node {
      * @param {Node} opt_parent Optional parent node.
      * @constructor
      */
-    public Node(double x, double y, double w, double h, Node opt_parent) {
+    public Node(double x, double y, double w, double h, Node optParent) {
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
-        this.opt_parent = opt_parent;
+        this.optParent = optParent;
     }
 
     public double getX() {
@@ -76,11 +76,11 @@ public class Node {
     }
 
     public Node getParent() {
-        return opt_parent;
+        return optParent;
     }
 
-    public void setParent(Node opt_parent) {
-        this.opt_parent = opt_parent;
+    public void setParent(Node optParent) {
+        this.optParent = optParent;
     }
 
     public void setPoint(Location point) {
